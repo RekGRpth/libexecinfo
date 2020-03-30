@@ -30,8 +30,6 @@ CC=cc
 AR=ar
 EXECINFO_CFLAGS=$(CFLAGS) -O2 -pipe -fno-strict-aliasing -std=gnu99 -fstack-protector -c
 EXECINFO_LDFLAGS=$(LDFLAGS)
-DESTDIR :=
-PREFIX :=
 LIBDIR := $(PREFIX)/lib
 INCLUDEDIR := $(PREFIX)/include
 
