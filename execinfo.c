@@ -58,7 +58,7 @@ backtrace(void **buffer, int size)
 {
     int i;
 
-    for (i = 1; getframeaddr(i + 1) != NULL && i != size + 1; i++) {
+    for (i = 1; getframeaddr(i + 1) != NULL && getframeaddr(i + 1) != (void *)0x1 && i != size + 1; i++) {
         buffer[i - 1] = getreturnaddr(i);
         if (buffer[i - 1] == NULL)
             break;
@@ -141,7 +141,7 @@ backtrace_symbols_fd(void *const *buffer, int size, int fd)
                   2 +                      /* " <" */
                   strlen(info.dli_sname) + /* "function" */
                   1 +                      /* "+" */
-                  D10(offset) +            /* "offset */
+                  10 +                     /* "offset */
                   5 +                      /* "> at " */
                   strlen(info.dli_fname) + /* "filename" */
                   2;                       /* "\n\0" */
